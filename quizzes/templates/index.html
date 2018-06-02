@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/indexstyle.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet/scss" type="text/css" href="test.scss">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+       $(document).ready(function(){
+  var isWebkit = navigator && navigator.userAgent.match(/webkit/i);
+  var $root = $(isWebkit ? 'body' : 'html');
+  var elements = $('div'), elcount = elements.length;
+  var scrolling = false;
+  // Replacing the CSS attr(... url)
+  elements.css('background-image', function(i){
+    return 'url('+$(this).data('img')+')';
+  });
+  //Add permalinks
+  elements.each(function(i){
+    var $t = $(this);
+    var id = $t.attr('id');
+    if(!id) return;
+    $('<a>').addClass('permalink')
+            .attr('href', '#'+id)
+            .appendTo($t);
+  });
+  $root.keydown(function(e){
+    if(e.keyCode != 37 && e.keyCode != 39) return;
+    var current = scrolling || 0;
+    if(scrolling === false)
+    {
+      var bsT = $root.scrollTop(), t;
+      while(current < elcount && (t = elements.eq(current).offset().top) < bsT)
+        current++;
+    }
+    if(e.keyCode == 37) current--;
+    else if(scrolling !== false || t == bsT) current++;
+    current = (current + elcount) % elcount;
+    $root.stop().animate({scrollTop: elements.eq(current).offset().top}, function(){scrolling = false;});
+    scrolling = current;
+  });
+});
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand" href="#">Quizmaster</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Math <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-title">Most popular math tests:</li>
+            <li><a href="#">Algebra I test</a></li>
+            <li><a href="#">Algebra II test</a></li>
+            <li><a href="#">Differential equations test</a></li>
+            <li><a href="#">Calculus I test</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">All math tests</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Biology <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-title">Most popular biology tests:</li>
+            <li><a href="#">Biology test 1</a></li>
+            <li><a href="#">Biology test 2</a></li>
+            <li><a href="#">Biology test 3</a></li>
+            <li><a href="#">Biology test 4</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">All biology tests</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Geography <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-title">Most popular geography tests:</li>
+            <li><a href="#">Geography test 1</a></li>
+            <li><a href="#">Geography test 2</a></li>
+            <li><a href="#">Geography test 3</a></li>
+            <li><a href="#">Geography test 4</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">All geography tests</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Arts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="menu-title">Most popular arts tests:</li>
+            <li><a href="#">Arts test 1</a></li>
+            <li><a href="#">Arts test 2</a></li>
+            <li><a href="#">Arts test 3</a></li>
+            <li><a href="#">Arts test 4</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">All arts tests</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a> </li>
+        <li><a href="#">Log in</a> </li>
+      </ul>
+    </div>
+</nav>
+
+<div class="img" data-img="{% static 'images/slideshow/forgetreading.jpg' %}"><span class="multiline"><span class="max">LEARN</span>by reading less and testing more</span></div>
+<div class="img" ><span class="multiline"><span id="text-page-header">THE POWER OF SIMPLE QUIZZES</span><span class="text-page">Taking a test is not just a passive mechanism for assessing how much people know, according to new research. It actually helps people learn, and it works better than a number of other studying techniques.</span></div>
+<div class="img" data-img="{% static 'images/slideshow/question.jpg' %}"><span class="multiline"><span class="max">IMPROVE</span>by taking tests on a certain subject on certain times.</span></div>
+<div class="img" ><span class="multiline"><span id="text-page-header">THE POWER OF SIMPLE QUIZZES</span><span class="text-page">Taking a test is not just a passive mechanism for assessing how much people know, according to new research. It actually helps people learn, and it works better than a number of other studying techniques.</span></div>
+<div class="img" data-img="{% static 'images/slideshow/statistics.jpg' %}"><span class="multiline"><span class="max">CORRECT</span>yourself in the future by getting instant feed</span></div>
+
+
+
+</body>
+</html>
