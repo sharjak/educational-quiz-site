@@ -1,9 +1,12 @@
 from django.contrib import admin
 from django.conf.urls import url, include
 from . import views
+from django.urls import path
+from quizzes import views as quizzviews
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^quizzes/', include('quizzes.urls')),
-    url('', views.index, name='quizsite'),
+    path('admin/', admin.site.urls),
+    #path('quiz/', include('quizzes.urls')),
+    path('quiz/', quizzviews.quiz),
+    path('', views.index, name='quizsite')
 ]
