@@ -7,16 +7,15 @@ body, html {
 }
 
 .wrapper {
-  width: 430px;
+  width: 600px;
   margin: 0 auto;
-  height: 100%;
-  padding-top: 0px;
-}
+  opacity: 0.7;
+  }
 
 #quiz {
-  margin-top: 100px;
+  letter-spacing: 2px;
+  margin-top: 150px;
   background-color: #34495E;
-  padding-bottom: 60px;
   width: 100%;
   border-radius: 2%;
   color: #fff;
@@ -54,7 +53,7 @@ body, html {
 }
 
 .answers div {
-  width: 50%;
+  width: 25%;
   margin: 0 auto;
   padding-bottom: 15px;
   border-top: 1px solid grey;
@@ -83,4 +82,25 @@ body, html {
 
 .false {
   background-color: #DC4437;
+}
+
+
+.img
+{
+  position: relative;
+  height: 100%;
+  background-image: attr(data-img url);
+  background-color: #000;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  border-top: 3px solid white;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: -2px;
+  color: rgba(255,255,255,0.85);
+  text-stroke: 3px rgba(0,0,0,0.7);
+  cursor: default;
 }

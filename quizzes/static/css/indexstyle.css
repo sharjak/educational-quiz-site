@@ -17,6 +17,7 @@ html, body
   background-size: cover;
   background-position: center;
   border-bottom: 3px solid white;
+  border-top: 3px solid white;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 28px;
@@ -26,6 +27,17 @@ html, body
   text-stroke: 3px rgba(0,0,0,0.7);
   cursor: default;
 }
+
+.text-slide {
+    height: 100%;
+    background-color: #000;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: -2px;
+    color: rgba(255,255,255,0.85);
+    text-stroke: 3px rgba(0,0,0,0.7);
+}
+
 .img:last-of-type
 {
   border-bottom: none;
@@ -40,7 +52,7 @@ html, body
 .multiline
 {
   display: inline-block;
-  width: 350px;
+  margin-top: 200px;
 }
 .max
 {
@@ -63,15 +75,41 @@ html, body
 .text-page-header {
     display: block;
     font-size: 45px;
-    margin: 60px 0px 40px 0px;
+    margin-bottom: 20px;
     letter-spacing: 2px;
 }
 
-#text-page {
-    font-size: 1px
+.text-page-text {
+    width: 20px;
+    font-size: 20px;
     letter-spacing: 6px;
 }
 .img .permalink:hover
 {
   opacity: 1;
 }
+
+.fade {
+  background-color: lightgreen;
+  opacity: 1;
+}
+
+#register-btn {
+    display: inline-block;
+    background-color: #2bbbff;
+    opacity: 0.5;
+    font-size: 25px;
+    transition: 1s;
+}
+
+#register-btn:hover {
+    transition: 1s;
+    opacity: 1;
+}
+
+#register-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+

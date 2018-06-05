@@ -6,14 +6,16 @@
 <script src="{% static 'js/quiz.js' %}"></script>
 {% endblock %}
 {% block body %}
-<div class="wrapper">
-  <div id="quiz">
-    <h1>Trivia quiz</h1>
-    <p class="questions"></p>
-    <div class="answers"></div>
-    <div class="checkAnswers">
-      <h3>Correct?</h3>
-      <div class="checker">
+<div class="img fadein-img" data-img="{% static 'images/quizBackground/fern.jpg' %}">
+  <div class="wrapper fadein-text">
+    <div id="quiz">
+      <h1>Trivia quiz</h1>
+      <p class="questions"></p>
+      <div class="answers"></div>
+      <div class="checkAnswers">
+        <h3>Correct?</h3>
+        <div class="checker">
+        </div>
       </div>
     </div>
   </div>
