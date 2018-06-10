@@ -26,54 +26,19 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav pull-right">
-        <li class="dropdown pull-left">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Math<span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="menu-title">Most popular math tests:</li>
-            <li><a href="/quiz">Algebra I test</a></li>
-            <li><a href="/quiz">Algebra II test</a></li>
-            <li><a href="/quiz">Differential equations test</a></li>
-            <li><a href="/quiz">Calculus I test</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">All math tests</a></li>
-          </ul>
-        </li>
+        {% for theme in themes %}
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Biology<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ theme }}<span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li class="menu-title">Most popular biology tests:</li>
-            <li><a href="/quiz">Biology test 1</a></li>
-            <li><a href="/quiz">Biology test 2</a></li>
-            <li><a href="/quiz">Biology test 3</a></li>
-            <li><a href="/quiz">Biology test 4</a></li>
+            <li class="menu-title">Most popular:</li>
+            {% for quiz in quizzes %}
+              <li><a href="/quiz">{{ quiz }}</a></li>
+            {% endfor %}
             <li role="separator" class="divider"></li>
-            <li><a href="#">All biology tests</a></li>
+            <li><a href="#">All {{ theme }} tests</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Geography<span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="menu-title">Most popular geography tests:</li>
-            <li><a href="/quiz">Geography test 1</a></li>
-            <li><a href="/quiz">Geography test 2</a></li>
-            <li><a href="/quiz">Geography test 3</a></li>
-            <li><a href="/quiz">Geography test 4</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">All geography tests</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Arts<span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li class="menu-title">Most popular arts tests:</li>
-            <li><a href="/quiz">Arts test 1</a></li>
-            <li><a href="/quiz">Arts test 2</a></li>
-            <li><a href="/quiz">Arts test 3</a></li>
-            <li><a href="/quiz">Arts test 4</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">All arts tests</a></li>
-          </ul>
-        </li>
+        {% endfor %}
         <li><a href="#">About</a> </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right login-nav-dropdown">

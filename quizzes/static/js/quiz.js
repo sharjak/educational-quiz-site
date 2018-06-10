@@ -3,18 +3,8 @@ $(document).ready(function(){
   var $root = $(isWebkit ? 'body' : 'html');
   var elements = $('div'), elcount = elements.length;
   var scrolling = false;
-  // Replacing the CSS attr(... url)
   elements.css('background-image', function(i){
     return 'url('+$(this).data('img')+')';
-  });
-  //Add permalinks
-  elements.each(function(i){
-    var $t = $(this);
-    var id = $t.attr('id');
-    if(!id) return;
-    $('<a>').addClass('permalink')
-            .attr('href', '#'+id)
-            .appendTo($t);
   });
 });
 
@@ -28,11 +18,12 @@ window.onload = function () {
      // An object that holds all the questions + possible answers.
      // In the array --> last digit gives the right answer position
       allQuestions = {
-        'What is Canada\'s national animal?' : ['Beaver', 'Duck', 'Horse', 0],
 
-        'What is converted into alcohol during brewing?' : ['Grain', 'Sugar' , 'Water', 1],
+        'What is Canada\'s national animal?' : ['Beaver', 'Duck', 'Horse', 'Elephant', 'Dog', 'Goat', 0],
 
-        'In what year was Prince Andrew born? ' : ['1955', '1960', '1970', 1]
+        'What is converted into alcohol during brewing?' : ['Grain', 'Sugar' , 'Water', 'Gasoline', 'Wheat', 'Tears', 1],
+
+        'In what year was Prince Andrew born? ' : ['1955', '1960', '1970', '2010', '1992', '1962', 1]
       };
 
   function loadQuestion(curr) {
@@ -120,25 +111,3 @@ window.onload = function () {
   loadAnswers(current);
 
 };
-
-$(window).on("load",function() {
-  function fade(pageLoad) {
-    var windowTop=$(window).scrollTop(), windowBottom=windowTop+$(window).innerHeight();
-    var min=0.3, max=0.7, threshold=0.01;
-
-    $(".fade").each(function() {
-      /* Check the location of each desired element */
-      var objectHeight=$(this).outerHeight(), objectTop=$(this).offset().top, objectBottom=$(this).offset().top+objectHeight;
-
-      /* Fade element in/out based on its visible percentage */
-      if (objectTop < windowTop) {
-        if (objectBottom > windowTop) {$(this).fadeTo(0,min+((max-min)*((objectBottom-windowTop)/objectHeight)));}
-        else if ($(this).css("opacity")>=min+threshold || pageLoad) {$(this).fadeTo(0,min);}
-      } else if (objectBottom > windowBottom) {
-        if (objectTop < windowBottom) {$(this).fadeTo(0,min+((max-min)*((windowBottom-objectTop)/objectHeight)));}
-        else if ($(this).css("opacity")>=min+threshold || pageLoad) {$(this).fadeTo(0,min);}
-      } else if ($(this).css("opacity")<=max-threshold || pageLoad) {$(this).fadeTo(0,max);}
-    });
-  } fade(true); //fade elements on page-load
-  $(window).scroll(function(){fade(false);}); //fade elements on scroll
-});

@@ -11,4 +11,10 @@
 <div class="img" data-img="{% static 'images/slideshow/question.jpg' %}"><span class="multiline"><span class="max">IMPROVE</span>by taking tests on a certain subject on scheduled times.</span></div>
 <div class="text-slide"><span class="multiline"><span class="text-page-header">THE POWER OF SIMPLE QUIZZES</span><span class="text-page-text">Taking a test is not just a passive mechanism for assessing how much people know, according to new research. It actually helps people learn, and it works better than a number of other studying techniques.</span></span></div>
 <div class="img" data-img="{% static 'images/slideshow/statistics.jpg' %}"><span class="multiline"><span class="max">CORRECT</span>yourself in the future by getting instant feedback</span></div>
+{% for quiz in quizzes %}
+  <p>{{ quiz.name }}</p>
+  {% if quiz.theme.name == theme %}
+    <li><a href="/quiz">{{ quiz.name }}</a></li>
+  {% endif %}
+{% endfor %}
 {% endblock %}
